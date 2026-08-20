@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brickspace Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="world"></canvas>
+
+      <header class="topbar glass">
+        <a class="brand" href="#" aria-label="Brickspace home"><span class="brand-mark">B</span><span>BRICKSPACE</span></a>
+        <div class="toolbar">
+          <button class="tool active" id="buildTool"><span class="tool-icon">✦</span> BUILD</button>
+          <button class="tool" id="undoButton"><span class="tool-icon">↶</span> UNDO</button>
+          <button class="tool" id="clearButton"><span class="tool-icon">⌫</span> CLEAR</button>
+          <span class="divider"></span>
+          <button class="mode active" data-mode="orbit">Orbit</button>
+          <button class="mode" data-mode="free">Free-cam</button>
+          <button class="mode" data-mode="person">Person-view</button>
+        </div>
+        <div class="brick-count"><strong id="count">0</strong><span>BRICKS</span></div>
+      </header>
+
+      <section class="status-card glass">
+        <div class="status-dot"></div>
+        <div><b id="modeTitle">Orbit build-view</b><span id="modeHelp">Swipe or drag to orbit · Scroll to zoom · Click the baseplate to build</span></div>
+      </section>
+
+      <div class="reticle" id="reticle" aria-hidden="true"></div>
+
+      <aside class="brick-panel glass">
+        <div class="panel-heading"><div><span class="eyebrow">BRICK LIBRARY</span><h1>Pick a piece</h1></div><button class="close-panel" title="Collapse library">›</button></div>
+        <label class="search"><span>⌕</span><input id="colorSearch" autocomplete="off" placeholder="Search by color..." /></label>
+        <div class="color-filters" id="colorFilters"></div>
+        <p class="section-label">SELECTED PIECE</p>
+        <div class="selected-piece"><div class="piece-preview" id="selectedPreview"></div><div><b id="selectedName">Classic 2 × 4</b><span id="selectedInfo">8 studs · Red</span></div></div>
+        <p class="section-label">BRICKS</p>
+        <div class="brick-grid" id="brickGrid"></div>
+        <div class="panel-tip"><span>i</span><p><b>Builder tip</b>Stack pieces anywhere. Right-click a brick to remove it.</p></div>
+      </aside>
+
+      <div class="joystick-wrap" id="joystickWrap" aria-label="Free camera joystick"><div class="joystick-base"><div class="joystick-knob" id="joystickKnob"></div></div><span>MOVE</span></div>
+      <footer class="footer-hint"><kbd>R</kbd> rotate selected piece <span>·</span> <kbd>⌘</kbd> + <kbd>Z</kbd> undo <span>·</span> Right-click to remove</footer>
+      <div class="toast" id="toast">Welcome to Brickspace!</div>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
